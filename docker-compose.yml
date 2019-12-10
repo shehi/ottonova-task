@@ -1,0 +1,18 @@
+version: '3.7'
+
+services:
+  php:
+    container_name: php
+    image: audithsoftworks/docker:php
+    volumes:
+      - .:/var/www
+    working_dir: /var/www
+    environment:
+      XDEBUG_CONFIG: "remote_host=172.72.0.1"
+      WORKDIR: "/var/www"
+      MYUID: "${MYUID:-1000}"
+      MYGID: "${MYGID:-1000}"
+    entrypoint: ./build/docker-entrypoint.sh
+    command: php-fpm
+    stdin_open: true
+    tty: true

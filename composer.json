@@ -1,0 +1,52 @@
+{
+    "name": "shehi/task",
+    "description": "Task",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Shahriyar Imanov",
+            "email": "shehi@imanov.me",
+            "homepage": "http://cv.imanov.me",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.2",
+        "doctrine/common": "^2.11",
+        "symfony/console": "^5.0"
+    },
+    "require-dev": {
+        "fzaninotto/faker": "^1.5",
+        "mockery/mockery": "^1.0",
+        "phpunit/phpunit": "^8.0",
+        "roave/security-advisories": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "App\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": [
+                "laravel/dusk"
+            ]
+        }
+    },
+    "scripts": {
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true,
+        "discard-changes": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
