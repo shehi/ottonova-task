@@ -2,12 +2,16 @@
 
 ### Installation
 
-```composer install``` and that's it.
+```
+composer install;
+./bin/console.php vacation:calculate 2018;
+```
 
 I used a Docker container for development, so if you want that, go:
 ```
 docker-compose up -d;
-docker-compose exec php bash -lc "./bin/console.php vacation:calculate 2018"; # will run a sample command
+docker-compose exec php bash -lc "composer install";
+docker-compose exec php bash -lc "./bin/console.php vacation:calculate 2018";
 ```
 
 ### Tests
