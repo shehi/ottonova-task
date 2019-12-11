@@ -19,29 +19,11 @@ class Employee
      */
     protected $birthdate;
 
-    /**
-     * @var ?\DateTimeInterface
-     */
-    protected $contractStartedAt;
-
-    /**
-     * @var ?int
-     */
-    protected $contractVacationDaysOvverride;
-
-    /**
-     * @return int
-     */
     public function getId(): int
     {
         return $this->id;
     }
 
-    /**
-     * @param int $id
-     *
-     * @return $this
-     */
     public function setId(int $id): self
     {
         $this->id = $id;
@@ -69,30 +51,6 @@ class Employee
     public function setBirthdate(\DateTimeInterface $birthdate): self
     {
         $this->birthdate = $birthdate;
-
-        return $this;
-    }
-
-    public function getContractStartedAt(): \DateTimeInterface
-    {
-        return $this->contractStartedAt;
-    }
-
-    public function setContractStartedAt(\DateTimeInterface $contractStartedAt): self
-    {
-        $this->contractStartedAt = $contractStartedAt;
-
-        return $this;
-    }
-
-    public function getContractVacationDaysOvverride(): ?int
-    {
-        return $this->contractVacationDaysOvverride;
-    }
-
-    public function setContractVacationDaysOvverride(int $contractVacationDaysOvverride): self
-    {
-        $this->contractVacationDaysOvverride = $contractVacationDaysOvverride;
 
         return $this;
     }

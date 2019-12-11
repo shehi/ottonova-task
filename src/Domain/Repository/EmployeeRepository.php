@@ -3,7 +3,9 @@
 namespace App\Domain\Repository;
 
 use App\Domain\Entity\Employee;
+use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 class EmployeeRepository
 {
@@ -19,45 +21,46 @@ class EmployeeRepository
             (new Employee())
                 ->setId(1)
                 ->setName('Hans Muller')
-                ->setBirthdate(new \DateTimeImmutable('1950-12-30'))
-                ->setContractStartedAt(new \DateTimeImmutable('2001-01-01'))
+                ->setBirthdate(new DateTimeImmutable('1950-12-30'))
         );
         $this->store->add(
             (new Employee())
                 ->setId(2)
                 ->setName('Angelika Fringe')
-                ->setBirthdate(new \DateTimeImmutable('1966-06-09'))
-                ->setContractStartedAt(new \DateTimeImmutable('2001-01-15'))
+                ->setBirthdate(new DateTimeImmutable('1966-06-09'))
         );
         $this->store->add(
             (new Employee())
                 ->setId(3)
                 ->setName('Peter Klever')
-                ->setBirthdate(new \DateTimeImmutable('1991-07-12'))
-                ->setContractStartedAt(new \DateTimeImmutable('2016-05-15'))
-                ->setContractVacationDaysOvverride(27)
+                ->setBirthdate(new DateTimeImmutable('1991-07-12'))
         );
         $this->store->add(
             (new Employee())
                 ->setId(4)
                 ->setName('Marina Helter')
-                ->setBirthdate(new \DateTimeImmutable('1970-01-26'))
-                ->setContractStartedAt(new \DateTimeImmutable('2018-01-15'))
+                ->setBirthdate(new DateTimeImmutable('1970-01-26'))
         );
         $this->store->add(
             (new Employee())
                 ->setId(5)
                 ->setName('Sepp Meier')
-                ->setBirthdate(new \DateTimeImmutable('1980-05-23'))
-                ->setContractStartedAt(new \DateTimeImmutable('2017-12-01'))
+                ->setBirthdate(new DateTimeImmutable('1980-05-23'))
         );
     }
 
     /**
-     * @return \Doctrine\Common\Collections\Collection
+     * @return \Doctrine\Common\Collections\Collection|Employee[]
      */
-    public function getStore(): \Doctrine\Common\Collections\Collection
+    public function getStore(): Collection
     {
         return $this->store;
+    }
+
+    public function findById(int $id): Employee
+    {
+        return $this->getStore()->filter(static function (Employee $e) use ($id) {
+            return $e->getId() === $id;
+        })->first();
     }
 }

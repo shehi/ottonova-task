@@ -7,7 +7,7 @@ use Symfony\Component\Console\Tester\CommandTester;
 
 class CalculateVacationDaysCommandTest extends TestCase
 {
-    public function testExecute()
+    public function testExecute(): void
     {
         $application = new Application();
         $application->add(new CalculateVacationDaysCommand());
